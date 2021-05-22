@@ -3,10 +3,11 @@ import ReactDOM from "react-dom";
 
 import "./index.scss";
 import reportWebVitals from "./reportWebVitals";
+import Game from "./routes/game";
 
 ReactDOM.render(
   <StrictMode>
-    <div>subbiah</div>
+    <Game />
   </StrictMode>,
   document.getElementById("root")
 );
