@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 
 import "./index.scss";
 import reportWebVitals from "./reportWebVitals";
-import Game from "./routes/game";
+import App from "./bundle/app";
 
 ReactDOM.render(
   <StrictMode>
-    <Game />
+    <App />
   </StrictMode>,
   document.getElementById("root")
 );

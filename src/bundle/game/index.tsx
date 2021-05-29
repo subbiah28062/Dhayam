@@ -1,18 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 
-import "./index.scss";
-
-const gridHorizontal = 7;
-const totalGrid = gridHorizontal * gridHorizontal;
+import "./styles.scss";
+import {} from "./constants";
 
 export default function Game() {
   const defaultGridDimension = useMemo(findGridDimension, []);
-
   const [gridDimension, setGridDimension] = useState(defaultGridDimension);
-
-  const gridTemplateColumns = Array(gridHorizontal)
-    .fill(`${gridDimension}px`)
-    .join(" ");
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -29,25 +22,18 @@ export default function Game() {
     const smallestDimension = Math.min(screenWidth, screenHeight);
     const updatedGridDimension = smallestDimension / 7;
 
-    return updatedGridDimension - 2;
+    return updatedGridDimension;
   }
 
   return (
-    <div className="dh-game" style={{ gridTemplateColumns }}>
-      {Array(totalGrid)
-        .fill(0)
-        .map((grid) => {
-          return (
-            <div
-              style={{
-                width: gridDimension,
-                height: gridDimension,
-                background: "white",
-                border: "1px solid red",
-              }}
-            ></div>
-          );
-        })}
+    <div className="dh-game-area">
+      <div className="dh-game-area-top"></div>
+      <div className="dh-game-area-middle">
+        <div className="dh-game-area-middle-left"></div>
+        <div className="dh-game-area-middle-middle dh-game-grid"></div>
+        <div className="dh-game-area-middle-right"></div>
+      </div>
+      <div className="dh-game-area-bottom"></div>
     </div>
   );
 }

@@ -1,0 +1,63 @@
+@function hexToRGB($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
+@mixin createTheme(
+  $background,
+  $surface,
+  $error,
+  $primary,
+  $primary1,
+  $secondary,
+  $secondary2,
+  $elevation
+) {
+  --background: #{$background};
+  --background-rgb: #{hexToRGB($elevation)};
+  --surface: #{$surface};
+  --surface-rgb: #{hexToRGB($surface)};
+  --error: #{$error};
+  --error-rgb: #{hexToRGB($error)};
+  --primary: #{$primary};
+  --primary-rgb: #{hexToRGB($primary)};
+  --primary1: #{$primary1};
+  --primary1-rgb: #{hexToRGB($primary1)};
+  --secondary: #{$secondary};
+  --secondary-rgb: #{hexToRGB($secondary)};
+  --secondary2: #{$secondary2};
+  --secondary2-rgb: #{hexToRGB($secondary2)};
+  --elevation: #{$elevation};
+  --elevation-rgb: #{hexToRGB($elevation)};
+
+  // .db-background {
+  //   background-color: #{$background};
+  // }
+
+  // .db-surface {
+  //   background-color: #{$surface};
+  // }
+
+  // .db-error {
+  //   background-color: #{$error};
+  // }
+
+  // .db-primary {
+  //   background-color: #{$primary};
+  // }
+
+  // .db-primary1 {
+  //   background-color: #{$primary1};
+  // }
+
+  // .db-secondary {
+  //   background-color: #{$secondary};
+  // }
+
+  // .db-secondary2 {
+  //   background-color: #{$secondary2};
+  // }
+
+  // .db-secondary {
+  //   background-color: #{$background};
+  // }
+}

@@ -1,0 +1,14 @@
+@import "../create-theme.scss";
+
+.dh_theme_light {
+  @include createTheme(
+    $background: #ffffff,
+    $surface: #ffffff,
+    $error: #cf6679,
+    $primary: #bb86fc,
+    $primary1: #3700b3,
+    $secondary: #03dac5,
+    $secondary2: #018786,
+    $elevation: #000000
+  );
+}

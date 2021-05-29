@@ -1,0 +1,7 @@
+{
+  "scss": {
+    "prefix": "scss",
+    "body": ["import \"./styles.scss\";", ""],
+    "description": "import styles"
+  }
+}

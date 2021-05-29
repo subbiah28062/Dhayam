@@ -1,0 +1,31 @@
+@import "../../styles/styles.scss";
+
+$coinSize: 30px;
+
+.dh-game-area {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  &-top,
+  &-bottom {
+    height: $coinSize;
+    background-color: elevation(2);
+  }
+
+  &-middle {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 0;
+
+    &-left,
+    &-right {
+      height: 100%;
+      width: $coinSize;
+    }
+
+    &-middle {
+    }
+  }
+}
