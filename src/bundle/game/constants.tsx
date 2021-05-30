@@ -1,7 +1,8 @@
-export const noOfRows = 7;
-export const noOfColumns = 7;
+export const noOfGrid = 7;
 
-export const totalGrid = noOfRows * noOfColumns;
+export const coinAreaDimension = 30;
+
+export const totalGrid = noOfGrid * noOfGrid;
 
 // export const COMMON_GRID_ORDER = [
 //   [1, 2, 3, 4, 5, 6, 7],
