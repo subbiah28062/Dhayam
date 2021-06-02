@@ -1,6 +1,7 @@
 export const noOfGrid = 7;
 
-export const coinAreaDimension = 30;
+export const coinlengthDesktop = 40;
+export const coinlengthMobile = 20;
 
 export const totalGrid = noOfGrid * noOfGrid;
 

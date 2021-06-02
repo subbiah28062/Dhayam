@@ -1,35 +1,44 @@
 import { useEffect, useState } from "react";
 
 import "./styles.scss";
-import { coinAreaDimension, noOfGrid } from "./constants";
+import { coinlengthDesktop, coinlengthMobile, noOfGrid } from "./constants";
 
 export default function Game() {
-  const [gridDimension, setGridDimension] = useState(findGridDimension);
+  const [dimensions, setDimensions] = useState(getDimensions);
 
-  const { boxSize, wrapperStyle } = gridDimension;
+  const { boxSize, coinDimension, wrapperStyle } = dimensions;
 
   useEffect(() => {
     window.addEventListener("resize", () => {
-      setGridDimension(findGridDimension());
+      setDimensions(getDimensions());
     });
   }, []);
 
-  function findGridDimension() {
-    const coinDimension = 2 * coinAreaDimension;
+  function getDimensions() {
+    const screenWidth = document.body.clientWidth;
+    const screenHeight = document.body.clientHeight;
 
-    const screenWidth = document.body.clientWidth - coinDimension;
-    const screenHeight = document.body.clientHeight - coinDimension;
+    const isWidthBigger = screenWidth > screenHeight;
+    const coinDimension = isWidthBigger ? coinlengthDesktop : coinlengthMobile;
 
     const smallestDimension = Math.min(screenWidth, screenHeight);
-    const updatedGridDimension = smallestDimension / noOfGrid;
+    const largestDimension = Math.max(screenWidth, screenHeight);
+
+    const remainingSpace = largestDimension - smallestDimension;
+    const offset = Math.max(0, 150 - remainingSpace);
+
+    const gameAreaDimension = smallestDimension - offset;
+
+    const updatedGridDimension =
+      (gameAreaDimension - 2 * coinDimension) / noOfGrid;
 
     return {
       boxSize: updatedGridDimension,
+      coinDimension,
       wrapperStyle: {
-        flexDirection:
-          screenWidth > screenHeight
-            ? ("row" as "row")
-            : ("column" as "column"),
+        flexDirection: isWidthBigger
+          ? ("row" as "row")
+          : ("column" as "column"),
       },
     };
   }
@@ -40,22 +49,22 @@ export default function Game() {
       <div className="dh-game-area">
         <div
           className="dh-game-area-top"
-          style={{ height: coinAreaDimension }}
+          style={{ height: coinDimension }}
         ></div>
         <div className="dh-game-area-middle">
           <div
             className="dh-game-area-middle-left"
-            style={{ width: coinAreaDimension }}
+            style={{ width: coinDimension }}
           ></div>
           <GameGrid className="dh-game-area-middle-middle" boxSize={boxSize} />
           <div
             className="dh-game-area-middle-right"
-            style={{ width: coinAreaDimension }}
+            style={{ width: coinDimension }}
           ></div>
         </div>
         <div
           className="dh-game-area-bottom"
-          style={{ height: coinAreaDimension }}
+          style={{ height: coinDimension }}
         ></div>
       </div>
       <div className="dh-game-area-after"></div>
@@ -70,15 +79,16 @@ function GameGrid(props: { className?: string; boxSize: number }) {
     <div className={`dh-game-grid ${className}`}>
       {Array(noOfGrid)
         .fill(0)
-        .map(() => {
+        .map((row, rowIndex) => {
           return (
-            <div className="dh-game-grid-row">
+            <div className="dh-game-grid-row" key={rowIndex}>
               {Array(noOfGrid)
                 .fill(0)
-                .map(() => {
+                .map((column, clumnIndex) => {
                   return (
                     <div
                       className="dh-game-grid-box"
+                      key={clumnIndex}
                       style={{ width: boxSize, height: boxSize }}
                     />
                   );
