@@ -1,6 +1,4 @@
-@function hexToRGB($hex) {
-  @return red($hex), green($hex), blue($hex);
-}
+@import "./hex-to-rgb.scss";
 
 @mixin createTheme(
   $background,

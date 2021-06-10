@@ -1,5 +1,6 @@
-import { ThemeChanger } from "../../components";
-import Game from "../game";
+import { ThemeChanger } from "components";
+
+import Game from "bundle/game";
 
 import "./styles.scss";
 
