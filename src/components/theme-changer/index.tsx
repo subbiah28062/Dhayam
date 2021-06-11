@@ -2,40 +2,39 @@ import { useState, useMemo } from "react";
 
 import "./styles.scss";
 
-function ThemeChanger(props: { themes: String[] }) {
+function ThemeChanger(props: { themes: string[] }) {
   const { themes } = props;
-  const themesLength = themes.length;
 
-  const [themeIndex, setThemeIndex] = useState(getLocalstorageTheme);
+  const [theme, setTheme] = useState(getUserPreferencedTheme);
 
   useMemo(() => {
-    const themeClass = `dh_theme_${themes[themeIndex]}`;
-    document.body.className = themeClass;
-    localStorage.setItem("themeClass", themeClass);
-  }, [themes, themeIndex]);
+    document.body.classList.add(theme);
+    localStorage.setItem("user-prefered-theme", theme);
+
+    setTimeout(() => {
+      document.body.classList.remove("dh_theme_changer_animate");
+    }, 500);
+  }, [theme]);
 
   function handleThemeChange() {
-    const updatedThemeIndex = themeIndex + 1;
+    const themesLength = themes.length;
+    const themeIndex = themes.findIndex((currentTheme) => {
+      return theme === currentTheme;
+    });
 
-    setThemeIndex(updatedThemeIndex < themesLength ? updatedThemeIndex : 0);
+    const updatedThemeIndex = themeIndex + 1;
+    const selectedThemeIndex =
+      updatedThemeIndex < themesLength ? updatedThemeIndex : 0;
+
+    document.body.classList.remove(theme);
+    document.body.classList.add("dh_theme_changer_animate");
+    setTheme(themes[selectedThemeIndex]);
   }
 
-  function getLocalstorageTheme() {
-    let themeIndex = 0;
+  function getUserPreferencedTheme() {
+    const themeClass = localStorage.getItem("user-prefered-theme");
 
-    const themeClass = localStorage.getItem("themeClass");
-
-    if (themeClass) {
-      const themeIndexFound = themes.findIndex((theme) => {
-        return `dh_theme_${theme}` === themeClass;
-      });
-
-      if (themeIndexFound !== -1) {
-        themeIndex = themeIndexFound;
-      }
-    }
-
-    return themeIndex;
+    return themeClass || themes[0];
   }
 
   return (

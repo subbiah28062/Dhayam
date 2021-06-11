@@ -7,7 +7,9 @@ import "./styles.scss";
 export default function App() {
   return (
     <>
-      <ThemeChanger themes={["dark", "light", "blue"]} />
+      <ThemeChanger
+        themes={["dh_theme_dark", "dh_theme_light", "dh_theme_blue"]}
+      />
       <Game />
     </>
   );
