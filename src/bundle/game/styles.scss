@@ -1,0 +1,53 @@
+@import "styles/styles.scss";
+
+.dh-game-area {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: fit-content;
+
+  &-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  &-after {
+    flex: 1 1 0;
+  }
+
+  &-before {
+    flex: 1 1 0;
+  }
+
+  &-top,
+  &-bottom {
+    background-color: elevation(4);
+  }
+
+  &-middle {
+    display: flex;
+    flex: 1 1 0;
+
+    &-left,
+    &-right {
+      background-color: elevation(4);
+    }
+  }
+}
+
+.dh-game-grid {
+  display: flex;
+  flex-direction: column;
+
+  &-row {
+    display: flex;
+  }
+
+  &-box {
+    border: 1px solid elevation(4);
+    box-sizing: border-box;
+  }
+}

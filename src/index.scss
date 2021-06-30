@@ -1,19 +1,18 @@
-body {
-  margin: 0;
+@import "./components/styles.scss";
 
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import "./styles/themes/dark.scss";
+@import "./styles/themes/light.scss";
+@import "./styles/themes/blue.scss";
 
-  width: 100vw;
+.dh {
+  background-color: var(--background);
   height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  width: 100vw;
 
-  background-color: black;
-}
-
-#root {
-  width: 100%;
-  height: 100%;
+  &-root {
+    height: 100%;
+    width: 100%;
+  }
 }

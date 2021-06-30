@@ -1,0 +1,16 @@
+$elevations: (
+  0: 0,
+  1: 0.05,
+  2: 0.07,
+  3: 0.08,
+  4: 0.09,
+  5: 0.11,
+  6: 0.12,
+  7: 0.14,
+  8: 0.15,
+  9: 0.16,
+);
+
+@function elevation($elevation: 0, $color: var(--elevation-rgb)) {
+  @return rgba($color, map-get($elevations, $elevation));
+}

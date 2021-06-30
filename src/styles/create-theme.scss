@@ -1,0 +1,22 @@
+@import "./hex-to-rgb.scss";
+
+@mixin createTheme(
+  $background,
+  $surface,
+  $error,
+  $primary,
+  $primary1,
+  $secondary,
+  $secondary2,
+  $elevation
+) {
+  --background: #{$background};
+  --surface: #{$surface};
+  --error: #{$error};
+  --primary: #{$primary};
+  --primary1: #{$primary1};
+  --secondary: #{$secondary};
+  --secondary2: #{$secondary2};
+  --elevation: #{$elevation};
+  --elevation-rgb: #{hexToRGB($elevation)};
+}
